@@ -16,7 +16,8 @@ import bingemann_software.recipesplayer.data.Recipe;
 public class RecipeDbHttpClient
 {
     private static final String SERVER_IP = "192.168.0.143";
-    private static final String RECIPE_DB_URL = "http://" + SERVER_IP + "/recipes_db";
+    private static final String REQUEST_PORT = "8080";
+    private static final String RECIPE_DB_URL = "http://" + SERVER_IP + ":" + REQUEST_PORT + "/recipes-db";
 
     public static ServerResponse sendAddRecipe(Recipe recipe)
     {
@@ -25,16 +26,24 @@ public class RecipeDbHttpClient
             throw new NullPointerException();
         }
 
+        String response;
+
         try
         {
-            JSONObject response = HttpHelper.sendGet(getAddRecipeURL(recipe));
-
-            // TODO
-            return null;
+            response = HttpHelper.sendGet(getAddRecipeURL(recipe));
         } catch (ServerCannotBeReachedException e)
         {
             e.printStackTrace();
             return ServerResponse.SERVER_CANNOT_BE_REACHED;
+        }
+
+        try
+        {
+            return ServerResponse.valueOf(response);
+        }
+        catch (IllegalArgumentException ignored)
+        {
+            return ServerResponse.SERVER_RESPONSE_NOT_VALID;
         }
     }
 
@@ -57,9 +66,6 @@ public class RecipeDbHttpClient
         // essentials
         builder.append("client=");
         builder.append(recipe.getCreator().getName());
-
-        builder.append("&id=");
-        builder.append(recipe.getId());
 
         builder.append("&name=");
         builder.append(recipe.getName());

@@ -13,7 +13,25 @@ import java.net.URL;
 
 public class HttpHelper
 {
-    public static JSONObject sendGet(URL url) throws ServerCannotBeReachedException
+    public static JSONObject sendGetJSONResponse(URL url) throws ServerCannotBeReachedException
+    {
+        if(url == null)
+        {
+            return null;
+        }
+
+        try
+        {
+            return new JSONObject(sendGet(url));
+        } catch (JSONException e)
+        {
+            // string could not be decoded or was not in json-format
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static String sendGet(URL url) throws ServerCannotBeReachedException
     {
         if(url == null)
         {
@@ -35,11 +53,10 @@ public class HttpHelper
 
         try
         {
-            String jsonData = response.body().string();
-            return new JSONObject(jsonData);
-        } catch (IOException | JSONException e)
+            return response.body().string();
+        } catch (IOException e)
         {
-            // string could not be decoded or was not in json-format
+            // string could not be decoded
             e.printStackTrace();
             return null;
         }

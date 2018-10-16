@@ -19,7 +19,9 @@ public class MainActivity extends AppCompatActivity
 
     public void handleClickOnAddRecipe(View view)
     {
-        RecipeDbHttpClient.sendAddRecipe(
-                new Recipe(new Recipe.Creator("jan"), 4, "blaubeerkuchen"));
+        new Thread(() -> {
+            RecipeDbHttpClient.sendAddRecipe(
+                    new Recipe(new Recipe.Creator("jan"), 4, "burito"));
+        }).start();
     }
 }
