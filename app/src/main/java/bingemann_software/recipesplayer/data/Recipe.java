@@ -60,15 +60,19 @@ public class Recipe
         }
     }
 
-    public Recipe(Creator creator, int id, String name)
+    public Recipe(Creator creator, String name)
     {
         this.creator = creator;
-        this.id = id;
         this.name = name;
 
         this.description = "";
         this.occasion = Occasion.MEAL;
         // TODO set standart for pictureULR - google image search
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
     }
 
     public int getId()

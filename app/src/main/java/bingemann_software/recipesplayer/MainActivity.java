@@ -1,5 +1,7 @@
 package bingemann_software.recipesplayer;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,9 +25,11 @@ public class MainActivity extends ToolbarActivity
     public void handleClickOnAddRecipe(View view)
     {
         AddRecipeActivity.start(this);
-        new Thread(() -> {
-            RecipeDbHttpClient.sendAddRecipe(
-                    new Recipe(new Recipe.Creator("jan"), 4, "burito"));
-        }).start();
+    }
+
+    public static void start(Context context)
+    {
+        Intent intent = new Intent(context, MainActivity.class);
+        context.startActivity(intent);
     }
 }
