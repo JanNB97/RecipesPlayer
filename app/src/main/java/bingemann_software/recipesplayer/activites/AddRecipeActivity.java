@@ -7,7 +7,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import bingemann_software.recipesplayer.MainActivity;
 import bingemann_software.recipesplayer.R;
+import bingemann_software.recipesplayer.data.Recipe;
+import bingemann_software.recipesplayer.httpClient.RecipeDbHttpClient;
 
 public class AddRecipeActivity extends RecipeDetailActivity
 {
@@ -19,6 +22,28 @@ public class AddRecipeActivity extends RecipeDetailActivity
         super.onCreate(savedInstanceState);
     }
 
+    private Recipe getDisplayedRecipe()
+    {
+        // TODO - creator
+        String name = nameTextView.getText().toString();
+        if(name.isEmpty())
+        {
+            // TODO - enable field only if name not empty
+            return null;
+        }
+
+        Recipe recipe = new Recipe(new Recipe.Creator("Jan"), name);
+        String description = descriptionTextView.getText().toString();
+        if(!description.isEmpty())
+        {
+           recipe.setDescription(description);
+        }
+
+        // TODO - occasion spinner
+        return recipe;
+    }
+
+    // --- --- --- Option menu --- --- ---
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -36,12 +61,14 @@ public class AddRecipeActivity extends RecipeDetailActivity
         switch (item.getItemId())
         {
             case R.id.action_add:
+                new Thread(() -> {
+                    RecipeDbHttpClient.sendAddRecipe(this.getDisplayedRecipe());
+                }).start();
+                MainActivity.start(this);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
-
-
     }
 
     public static void start(Context context)
