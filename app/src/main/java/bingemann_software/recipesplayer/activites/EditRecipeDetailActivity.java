@@ -12,12 +12,6 @@ public class EditRecipeDetailActivity extends RecipeDetailActivity
         super.onCreate(savedInstanceState);
     }
 
-    @Override
-    protected void modifyToolbar()
-    {
-        // TODO
-    }
-
     public static void start(Context context)
     {
         Intent intent = new Intent(context, EditRecipeDetailActivity.class);
