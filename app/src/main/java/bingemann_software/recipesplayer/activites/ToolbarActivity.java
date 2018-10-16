@@ -12,7 +12,6 @@ public class ToolbarActivity extends AppCompatActivity
     {
         this.setContentView(layoutResID);
         this.addToolbar();
-        this.modifyToolbar();
     }
 
     private void addToolbar()
@@ -20,6 +19,4 @@ public class ToolbarActivity extends AppCompatActivity
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
     }
-
-    protected void modifyToolbar(){}
 }

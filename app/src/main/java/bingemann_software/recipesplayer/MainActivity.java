@@ -7,10 +7,11 @@ import android.view.View;
 
 import bingemann_software.recipesplayer.activites.AddRecipeActivity;
 import bingemann_software.recipesplayer.activites.RecipeDetailActivity;
+import bingemann_software.recipesplayer.activites.ToolbarActivity;
 import bingemann_software.recipesplayer.data.Recipe;
 import bingemann_software.recipesplayer.httpClient.RecipeDbHttpClient;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends ToolbarActivity
 {
     @Override
     protected void onCreate(Bundle savedInstanceState)
