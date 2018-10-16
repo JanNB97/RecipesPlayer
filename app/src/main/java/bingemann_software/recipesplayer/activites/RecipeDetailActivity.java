@@ -7,13 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 
 import bingemann_software.recipesplayer.R;
 
-public class RecipeDetailActivity extends AppCompatActivity
+public class RecipeDetailActivity extends ToolbarActivity
 {
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recipe_detail);
+        setContentViewAndAddToolbar(R.layout.activity_recipe_detail);
     }
 
     public static void start(Context context)

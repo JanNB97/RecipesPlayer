@@ -8,7 +8,7 @@ import bingemann_software.recipesplayer.R;
 
 public class ToolbarActivity extends AppCompatActivity
 {
-    protected void setContentViewWithoutTitleBar(@LayoutRes int layoutResID)
+    protected void setContentViewAndAddToolbar(@LayoutRes int layoutResID)
     {
         this.setContentView(layoutResID);
         this.addToolbar();
