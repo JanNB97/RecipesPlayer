@@ -39,7 +39,6 @@ public class RecipeDetailActivity extends ToolbarGoBackActivity
     @Override
     protected void onGoBackClicked()
     {
-        Intent intent = new Intent(this, super.parent);
-        this.startActivity(intent);
+
     }
 }

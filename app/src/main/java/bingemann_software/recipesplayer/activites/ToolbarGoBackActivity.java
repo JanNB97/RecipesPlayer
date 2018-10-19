@@ -57,13 +57,15 @@ public abstract class ToolbarGoBackActivity extends ToolbarActivity
         {
             case ITEM_BACK_ID:
                 this.onGoBackClicked();
+                Intent intent = new Intent(this, this.parent);
+                this.startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    protected abstract void onGoBackClicked();
+    protected void onGoBackClicked(){}
 
     public static void addDataToIntent(Intent intent, Class<?> parent)
     {
