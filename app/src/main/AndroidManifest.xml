@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".MainActivity"
+            android:label="Alle Rezepte"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +20,8 @@
         </activity>
 
         <activity android:name=".activites.RecipeDetailActivity"></activity>
-        <activity android:name=".activites.AddRecipeActivity"></activity>
+        <activity android:name=".activites.AddRecipeActivity"
+            android:label="Rezept hinzufügen"></activity>
         <activity android:name=".activites.EditRecipeDetailActivity"></activity>
     </application>
 
