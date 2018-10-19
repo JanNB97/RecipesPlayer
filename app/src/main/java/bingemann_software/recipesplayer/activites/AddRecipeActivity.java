@@ -67,10 +67,10 @@ public class AddRecipeActivity extends RecipeDetailActivity
         }
     }
 
-    public static void start(Context context, Class<?> parent)
+    public static void start(Context context)
     {
         Intent intent = new Intent(context, AddRecipeActivity.class);
-        addDataToIntent(intent, parent);
+        addDataToIntent(intent, MainActivity.class);
         context.startActivity(intent);
     }
 }
