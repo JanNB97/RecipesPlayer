@@ -45,14 +45,11 @@ public class AddRecipeActivity extends RecipeDetailActivity
 
     // --- --- --- Option menu --- --- ---
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
+    public boolean onPrepareOptionsMenu(Menu menu)
     {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.add_toolbar_items, menu);
-
-        this.addItem = menu.findItem(R.id.action_add);
-
-        return true;
+        addItem = menu.findItem(R.id.action_add);
+        addItem.setVisible(true);
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override

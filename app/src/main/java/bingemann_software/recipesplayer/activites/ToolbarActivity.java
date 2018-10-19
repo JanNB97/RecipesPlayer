@@ -3,10 +3,12 @@ package bingemann_software.recipesplayer.activites;
 import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import bingemann_software.recipesplayer.R;
 
-public class ToolbarActivity extends AppCompatActivity
+public abstract class ToolbarActivity extends AppCompatActivity
 {
     protected void setContentViewAndAddToolbar(@LayoutRes int layoutResID)
     {
@@ -18,5 +20,14 @@ public class ToolbarActivity extends AppCompatActivity
     {
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.toolbar_items, menu);
+
+        return true;
     }
 }

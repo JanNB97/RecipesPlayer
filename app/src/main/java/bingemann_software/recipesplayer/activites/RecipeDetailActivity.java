@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import bingemann_software.recipesplayer.R;
 
-public class RecipeDetailActivity extends ToolbarActivity
+public class RecipeDetailActivity extends ToolbarGoBackActivity
 {
     protected TextView nameTextView;
     protected ImageView imageView;
@@ -32,5 +32,11 @@ public class RecipeDetailActivity extends ToolbarActivity
     {
         Intent intent = new Intent(context, RecipeDetailActivity.class);
         context.startActivity(intent);
+    }
+
+    @Override
+    protected void onGoBackClicked()
+    {
+        // TODO
     }
 }
