@@ -3,7 +3,10 @@ package bingemann_software.recipesplayer.activites;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -23,12 +26,18 @@ public class RecipeDetailActivity extends ToolbarGoBackActivity
         super.onCreate(savedInstanceState);
         setContentViewAndAddToolbar(R.layout.activity_recipe_detail);
 
+        this.findViewsById();
+    }
+
+    private void findViewsById()
+    {
         this.nameTextView = this.findViewById(R.id.nameTextView);
         this.imageView = this.findViewById(R.id.imageView);
         this.descriptionTextView = this.findViewById(R.id.descriptionTextView);
         this.occasionSpinner = this.findViewById(R.id.occasionSpinner);
     }
 
+    // --- --- --- call from other activity --- --- ---
     public static void start(Context context, Class<?> parent)
     {
         Intent intent = new Intent(context, RecipeDetailActivity.class);

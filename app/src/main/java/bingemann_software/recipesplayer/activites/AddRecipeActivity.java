@@ -3,6 +3,8 @@ package bingemann_software.recipesplayer.activites;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -19,6 +21,8 @@ public class AddRecipeActivity extends RecipeDetailActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+        this.initNameTextView();
     }
 
     private Recipe getDisplayedRecipe()
@@ -42,12 +46,34 @@ public class AddRecipeActivity extends RecipeDetailActivity
         return recipe;
     }
 
-    // --- --- --- Option menu --- --- ---
+    private void initNameTextView()
+    {
+        this.nameTextView.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence newText, int i, int i1, int i2)
+            {
+                setAddActionButtonEnabled(newText.length() != 0);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable){}
+        });
+    }
+
+    // --- --- --- Action menu --- --- ---
+    private void setAddActionButtonEnabled(boolean enabled)
+    {
+        this.addItem.setVisible(enabled);
+    }
+
     @Override
     public boolean onPrepareOptionsMenu(Menu menu)
     {
         addItem = menu.findItem(R.id.action_add);
-        addItem.setVisible(true);
         return super.onPrepareOptionsMenu(menu);
     }
 
