@@ -28,6 +28,12 @@ public abstract class ToolbarGoBackActivity extends ToolbarActivity
     private void setParent()
     {
         String parentName = this.getIntent().getStringExtra(PARENT_KEY);
+        if(parentName == null)
+        {
+            // use addDataToIntent to send parent-activity-name to your activity
+            throw new NullPointerException();
+        }
+
         try
         {
             this.parent = Class.forName(parentName);
