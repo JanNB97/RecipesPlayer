@@ -24,7 +24,7 @@ public class MainActivity extends ToolbarActivity
 
     public void handleClickOnAddRecipe(View view)
     {
-        AddRecipeActivity.start(this, MainActivity.class);
+        AddRecipeActivity.start(this);
     }
 
     public static void start(Context context)
