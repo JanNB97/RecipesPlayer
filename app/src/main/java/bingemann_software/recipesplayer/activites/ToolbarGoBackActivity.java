@@ -13,9 +13,7 @@ public abstract class ToolbarGoBackActivity extends ToolbarActivity
     @Override
     public boolean onPrepareOptionsMenu(Menu menu)
     {
-        MenuItem goBackItem = menu.findItem(R.id.action_back);
-        goBackItem.setVisible(true);
-
+        super.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         return true;
     }
 
@@ -24,8 +22,8 @@ public abstract class ToolbarGoBackActivity extends ToolbarActivity
     {
         switch (item.getItemId())
         {
-            case R.id.action_back:
-                onGoBackClicked();
+            case R.id.home:
+                this.onGoBackClicked();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

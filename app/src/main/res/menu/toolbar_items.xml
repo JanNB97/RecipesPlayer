@@ -9,13 +9,6 @@
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/action_back"
-        android:icon="@drawable/ic_arrow_back"
-        android:title="Zurück"
-        android:visible="false"
-        app:showAsAction="ifRoom"/>
-
-    <item
         android:id="@+id/action_edit"
         android:icon="@drawable/ic_edit"
         android:title="Bearbeiten"
