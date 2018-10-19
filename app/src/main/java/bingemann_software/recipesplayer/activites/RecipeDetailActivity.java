@@ -35,10 +35,4 @@ public class RecipeDetailActivity extends ToolbarGoBackActivity
         addDataToIntent(intent, parent);
         context.startActivity(intent);
     }
-
-    @Override
-    protected void onGoBackClicked()
-    {
-
-    }
 }
