@@ -57,9 +57,9 @@ public class AddRecipeActivity extends RecipeDetailActivity
         switch (item.getItemId())
         {
             case R.id.action_add:
-                new Thread(() -> {
-                    RecipeDbHttpClient.sendAddRecipe(this.getDisplayedRecipe());
-                }).start();
+                new Thread(() ->
+                    RecipeDbHttpClient.sendAddRecipe(this.getDisplayedRecipe())
+                ).start();
                 MainActivity.start(this);
                 return true;
             default:
