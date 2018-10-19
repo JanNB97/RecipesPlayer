@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import bingemann_software.recipesplayer.MainActivity;
@@ -68,9 +67,10 @@ public class AddRecipeActivity extends RecipeDetailActivity
         }
     }
 
-    public static void start(Context context)
+    public static void start(Context context, Class<?> parent)
     {
         Intent intent = new Intent(context, AddRecipeActivity.class);
+        addDataToIntent(intent, parent);
         context.startActivity(intent);
     }
 }

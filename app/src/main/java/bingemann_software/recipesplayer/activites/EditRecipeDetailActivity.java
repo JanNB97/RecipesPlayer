@@ -12,9 +12,10 @@ public class EditRecipeDetailActivity extends RecipeDetailActivity
         super.onCreate(savedInstanceState);
     }
 
-    public static void start(Context context)
+    public static void start(Context context, Class<?> parent)
     {
         Intent intent = new Intent(context, EditRecipeDetailActivity.class);
+        addDataToIntent(intent, parent);
         context.startActivity(intent);
     }
 }

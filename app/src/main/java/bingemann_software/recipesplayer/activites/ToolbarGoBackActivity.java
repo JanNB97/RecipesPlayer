@@ -10,6 +10,8 @@ import bingemann_software.recipesplayer.httpClient.RecipeDbHttpClient;
 
 public abstract class ToolbarGoBackActivity extends ToolbarActivity
 {
+    public static final int ITEM_BACK_ID = 16908332;
+
     @Override
     public boolean onPrepareOptionsMenu(Menu menu)
     {
@@ -22,7 +24,7 @@ public abstract class ToolbarGoBackActivity extends ToolbarActivity
     {
         switch (item.getItemId())
         {
-            case R.id.home:
+            case ITEM_BACK_ID:
                 this.onGoBackClicked();
                 return true;
             default:
