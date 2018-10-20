@@ -7,6 +7,7 @@ import android.view.View;
 
 import bingemann_software.recipesplayer.activites.AddRecipeActivity;
 import bingemann_software.recipesplayer.activites.ToolbarActivity;
+import bingemann_software.recipesplayer.recycler_view.AllRecipesRecyclerView;
 
 public class MainActivity extends ToolbarActivity
 {
@@ -15,6 +16,8 @@ public class MainActivity extends ToolbarActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        AllRecipesRecyclerView allRecipesRecyclerView = new AllRecipesRecyclerView(this, R.id.allRecipesRecyclerView);
     }
 
     public void handleClickOnAddRecipe(View view)
