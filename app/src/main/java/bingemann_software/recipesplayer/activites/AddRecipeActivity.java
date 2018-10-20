@@ -7,6 +7,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ import bingemann_software.recipesplayer.http_client.RecipeDbHttpClient;
 public class AddRecipeActivity extends RecipeDetailActivity
 {
     protected MenuItem addItem;
+    protected Recipe.Occasion selectedOccasion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -48,6 +51,11 @@ public class AddRecipeActivity extends RecipeDetailActivity
            recipe.setDescription(description);
         }
 
+        if(this.selectedOccasion != Recipe.Occasion.MEAL)
+        {
+            recipe.setOccasion(this.selectedOccasion);
+        }
+
         // TODO - occasion spinner
         return recipe;
     }
@@ -73,6 +81,20 @@ public class AddRecipeActivity extends RecipeDetailActivity
     private void initOccasionSpinner()
     {
         super.occasionSpinner.setAdapter(new OccasionArrayAdapter(this));
+
+        super.occasionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
+            {
+                selectedOccasion = Recipe.Occasion.values()[i];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {}
+        });
+
+        super.occasionSpinner.setSelection(Recipe.Occasion.MEAL.ordinal());
     }
 
     // --- --- --- Action menu --- --- ---
@@ -94,6 +116,7 @@ public class AddRecipeActivity extends RecipeDetailActivity
         switch (item.getItemId())
         {
             case R.id.action_add:
+                // TODO make task
                 new Thread(() ->
                     RecipeDbHttpClient.sendAddRecipe(this.getDisplayedRecipe())
                 ).start();
