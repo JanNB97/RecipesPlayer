@@ -1,7 +1,12 @@
 package bingemann_software.recipesplayer.data;
 
+import android.support.annotation.DrawableRes;
+import android.support.annotation.IdRes;
+
 import java.net.MalformedURLException;
 import java.net.URL;
+
+import bingemann_software.recipesplayer.R;
 
 public class Recipe
 {
@@ -15,17 +20,26 @@ public class Recipe
 
     public enum Occasion
     {
-        MEAL("Mahlzeit"), DESERT("Nachtisch");
+        APPETIZER("Vorspeise", R.drawable.appetizer_icon_trans_v2),
+        MEAL("Mahlzeit", R.drawable.meal_icon_trans),
+        DESERT("Dessert", R.drawable.dessert_icon_trans);
 
         String value;
-        Occasion(String value)
+        @DrawableRes int icon;
+        Occasion(String value, @DrawableRes int icon)
         {
             this.value = value;
+            this.icon = icon;
         }
 
         public String getValue()
         {
             return value;
+        }
+
+        public int getIcon()
+        {
+            return icon;
         }
     }
 
