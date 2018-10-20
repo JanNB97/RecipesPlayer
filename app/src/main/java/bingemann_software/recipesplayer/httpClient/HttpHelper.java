@@ -13,6 +13,24 @@ import java.net.URL;
 
 public class HttpHelper
 {
+    public static JSONArray sendGetJSONArrayResponse(URL url) throws ServerCannotBeReachedException
+    {
+        if(url == null)
+        {
+            return null;
+        }
+
+        try
+        {
+            return new JSONArray(sendGet(url));
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public static JSONObject sendGetJSONResponse(URL url) throws ServerCannotBeReachedException
     {
         if(url == null)
