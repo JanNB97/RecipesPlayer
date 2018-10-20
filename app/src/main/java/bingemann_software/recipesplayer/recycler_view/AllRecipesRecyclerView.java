@@ -35,4 +35,9 @@ public class AllRecipesRecyclerView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(activity);
         this.recyclerView.setLayoutManager(layoutManager);
     }
+
+    public RecipeAdapter getAdapter()
+    {
+        return recipeAdapter;
+    }
 }

@@ -8,10 +8,14 @@ import android.view.View;
 
 import bingemann_software.recipesplayer.activites.AddRecipeActivity;
 import bingemann_software.recipesplayer.activites.ToolbarActivity;
+import bingemann_software.recipesplayer.data.AllRecipesList;
+import bingemann_software.recipesplayer.data.Recipe;
 import bingemann_software.recipesplayer.recycler_view.AllRecipesRecyclerView;
 
 public class MainActivity extends ToolbarActivity
 {
+    private AllRecipesRecyclerView allRecipesRecyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -20,7 +24,7 @@ public class MainActivity extends ToolbarActivity
 
         this.initTabItems();
 
-        AllRecipesRecyclerView allRecipesRecyclerView = new AllRecipesRecyclerView(this, R.id.allRecipesRecyclerView);
+        this.allRecipesRecyclerView = new AllRecipesRecyclerView(this, R.id.allRecipesRecyclerView);
     }
 
     private void initTabItems()
@@ -38,6 +42,30 @@ public class MainActivity extends ToolbarActivity
         View view3 = getLayoutInflater().inflate(R.layout.custom_tab, null);
         view3.findViewById(R.id.icon).setBackgroundResource(R.drawable.dessert_icon_trans);
         tabLayout.addTab(tabLayout.newTab().setCustomView(view3));
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener()
+        {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab)
+            {
+                handleOnTabSelected(tab);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {}
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {}
+        });
+    }
+
+    private void handleOnTabSelected(TabLayout.Tab tab)
+    {
+        int position = tab.getPosition();
+        Recipe.Occasion selectedOccasion = Recipe.Occasion.values()[position];
+        AllRecipesList.getInstance().setOccasion(selectedOccasion);
+
+        this.allRecipesRecyclerView.getAdapter().notifyDataSetChanged();
     }
 
     public void handleClickOnAddRecipe(View view)
