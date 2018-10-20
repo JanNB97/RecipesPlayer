@@ -11,7 +11,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.URL;
 
-public class HttpHelper
+public final class HttpHelper
 {
     public static JSONArray sendGetJSONArrayResponse(URL url) throws ServerCannotBeReachedException
     {

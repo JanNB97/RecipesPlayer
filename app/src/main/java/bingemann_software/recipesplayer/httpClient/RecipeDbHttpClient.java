@@ -11,7 +11,7 @@ import java.util.List;
 
 import bingemann_software.recipesplayer.data.Recipe;
 
-public class RecipeDbHttpClient
+public final class RecipeDbHttpClient
 {
     public static ServerResponse sendAddRecipe(Recipe recipe)
     {
