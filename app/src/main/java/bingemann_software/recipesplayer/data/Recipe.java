@@ -21,7 +21,7 @@ public class Recipe
     public enum Occasion
     {
         APPETIZER("Vorspeise", R.drawable.appetizer_icon_trans_v2),
-        MEAL("Mahlzeit", R.drawable.meal_icon_trans),
+        MEAL("Hauptspeise", R.drawable.meal_icon_trans),
         DESERT("Dessert", R.drawable.dessert_icon_trans);
 
         String value;
