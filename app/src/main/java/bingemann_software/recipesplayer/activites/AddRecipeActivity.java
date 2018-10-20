@@ -7,9 +7,14 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import bingemann_software.recipesplayer.MainActivity;
 import bingemann_software.recipesplayer.R;
+import bingemann_software.recipesplayer.activites.occasion_spinner.OccasionArrayAdapter;
 import bingemann_software.recipesplayer.data.Recipe;
 import bingemann_software.recipesplayer.http_client.RecipeDbHttpClient;
 
@@ -23,6 +28,7 @@ public class AddRecipeActivity extends RecipeDetailActivity
         super.onCreate(savedInstanceState);
 
         this.initNameTextView();
+        this.initOccasionSpinner();
     }
 
     private Recipe getDisplayedRecipe()
@@ -62,6 +68,11 @@ public class AddRecipeActivity extends RecipeDetailActivity
             @Override
             public void afterTextChanged(Editable editable){}
         });
+    }
+
+    private void initOccasionSpinner()
+    {
+        super.occasionSpinner.setAdapter(new OccasionArrayAdapter(this));
     }
 
     // --- --- --- Action menu --- --- ---
