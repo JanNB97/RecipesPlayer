@@ -15,7 +15,7 @@ public class MainActivity extends ToolbarActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentViewAndAddToolbar(R.layout.activity_main, R.string.main_activity_title);
 
         AllRecipesRecyclerView allRecipesRecyclerView = new AllRecipesRecyclerView(this, R.id.allRecipesRecyclerView);
     }
