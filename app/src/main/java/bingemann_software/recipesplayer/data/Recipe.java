@@ -22,7 +22,7 @@ public class Recipe
     {
         APPETIZER("Vorspeise", R.drawable.appetizer_icon_trans_v2),
         MEAL("Hauptspeise", R.drawable.meal_icon_trans),
-        DESERT("Dessert", R.drawable.dessert_icon_trans);
+        Dessert("Dessert", R.drawable.dessert_icon_trans);
 
         String value;
         @DrawableRes int icon;
