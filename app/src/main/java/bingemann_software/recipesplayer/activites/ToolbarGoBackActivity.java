@@ -4,12 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-
-import bingemann_software.recipesplayer.MainActivity;
-import bingemann_software.recipesplayer.R;
-import bingemann_software.recipesplayer.httpClient.RecipeDbHttpClient;
 
 public abstract class ToolbarGoBackActivity extends ToolbarActivity
 {

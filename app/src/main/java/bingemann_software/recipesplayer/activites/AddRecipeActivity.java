@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import bingemann_software.recipesplayer.MainActivity;
 import bingemann_software.recipesplayer.R;
 import bingemann_software.recipesplayer.data.Recipe;
-import bingemann_software.recipesplayer.httpClient.RecipeDbHttpClient;
+import bingemann_software.recipesplayer.http_client.RecipeDbHttpClient;
 
 public class AddRecipeActivity extends RecipeDetailActivity
 {

@@ -1,12 +1,10 @@
 package bingemann_software.recipesplayer.googe_image_api;
 
-import org.json.JSONObject;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import bingemann_software.recipesplayer.httpClient.HttpHelper;
-import bingemann_software.recipesplayer.httpClient.ServerCannotBeReachedException;
+import bingemann_software.recipesplayer.http_client.HttpHelper;
+import bingemann_software.recipesplayer.http_client.ServerCannotBeReachedException;
 
 public class GoogleImageURLScraper
 {

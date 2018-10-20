@@ -1,4 +1,4 @@
-package bingemann_software.recipesplayer.httpClient;
+package bingemann_software.recipesplayer.http_client;
 
 public final class ServerConstants
 {

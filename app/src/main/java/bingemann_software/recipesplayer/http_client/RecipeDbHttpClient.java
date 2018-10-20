@@ -1,4 +1,4 @@
-package bingemann_software.recipesplayer.httpClient;
+package bingemann_software.recipesplayer.http_client;
 
 import org.json.JSONArray;
 import org.json.JSONException;
