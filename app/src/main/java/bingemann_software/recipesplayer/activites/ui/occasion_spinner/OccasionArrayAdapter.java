@@ -1,8 +1,6 @@
-package bingemann_software.recipesplayer.activites.occasion_spinner;
+package bingemann_software.recipesplayer.activites.ui.occasion_spinner;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -11,9 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import bingemann_software.recipesplayer.R;
 import bingemann_software.recipesplayer.data.Recipe;

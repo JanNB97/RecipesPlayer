@@ -1,6 +1,5 @@
-package bingemann_software.recipesplayer.recycler_view;
+package bingemann_software.recipesplayer.activites.ui.recycler_view;
 
-import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;

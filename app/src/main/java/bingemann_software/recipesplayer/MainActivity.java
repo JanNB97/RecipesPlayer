@@ -8,9 +8,8 @@ import android.view.View;
 
 import bingemann_software.recipesplayer.activites.AddRecipeActivity;
 import bingemann_software.recipesplayer.activites.ToolbarActivity;
-import bingemann_software.recipesplayer.data.OccasionRecipesList;
 import bingemann_software.recipesplayer.data.Recipe;
-import bingemann_software.recipesplayer.recycler_view.AllRecipesRecyclerView;
+import bingemann_software.recipesplayer.activites.ui.recycler_view.AllRecipesRecyclerView;
 
 public class MainActivity extends ToolbarActivity
 {

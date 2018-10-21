@@ -9,14 +9,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import bingemann_software.recipesplayer.MainActivity;
 import bingemann_software.recipesplayer.R;
-import bingemann_software.recipesplayer.activites.occasion_spinner.OccasionArrayAdapter;
+import bingemann_software.recipesplayer.activites.ui.recycler_view.occasion_spinner.OccasionArrayAdapter;
 import bingemann_software.recipesplayer.data.Recipe;
 import bingemann_software.recipesplayer.http_client.RecipeDbHttpClient;
 

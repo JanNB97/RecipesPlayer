@@ -1,4 +1,4 @@
-package bingemann_software.recipesplayer.recycler_view;
+package bingemann_software.recipesplayer.activites.ui.recycler_view;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
