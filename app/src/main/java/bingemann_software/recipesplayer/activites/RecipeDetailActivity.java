@@ -45,7 +45,7 @@ public class RecipeDetailActivity extends ToolbarGoBackActivity
         this.occasionSpinner.setEnabled(enabled);
     }
 
-    // --- --- --- call from other activity --- --- ---
+    // --- --- --- Call from other activity --- --- ---
     public static void start(Context context, Class<?> parent)
     {
         Intent intent = new Intent(context, RecipeDetailActivity.class);

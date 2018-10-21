@@ -76,7 +76,7 @@ public class MainActivity extends ToolbarActivity
         AddRecipeActivity.start(this);
     }
 
-    // --- --- --- call from other activities --- --- ---
+    // --- --- --- Call from other activities --- --- ---
     public static void start(Context context)
     {
         Intent intent = new Intent(context, MainActivity.class);

@@ -24,7 +24,7 @@ public class AllRecipesRecyclerView
 
     private RecipeAdapter[] allRecipeAdapters;
 
-    // --- --- --- initialization --- --- ---
+    // --- --- --- Initialization --- --- ---
     public AllRecipesRecyclerView(MainActivity mainActivity, @IdRes int id)
     {
         this.mainActivity = mainActivity;
@@ -57,7 +57,7 @@ public class AllRecipesRecyclerView
         this.recyclerView.setLayoutManager(layoutManager);
     }
 
-    // --- --- --- adapter --- --- ---
+    // --- --- --- Adapters --- --- ---
     private ServerResponse initAdapters()
     {
         try

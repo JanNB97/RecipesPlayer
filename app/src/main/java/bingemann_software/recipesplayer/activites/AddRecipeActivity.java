@@ -28,7 +28,7 @@ public class AddRecipeActivity extends RecipeDetailActivity
     protected MenuItem addItem;
     protected Recipe.Occasion selectedOccasion;
 
-    // --- --- --- initialization --- --- ---
+    // --- --- --- Initialization --- --- ---
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -128,7 +128,7 @@ public class AddRecipeActivity extends RecipeDetailActivity
         }
     }
 
-    // --- --- --- handle actions --- --- ---
+    // --- --- --- Handle actions --- --- ---
     public void handleClickedOnAddAction()
     {
         super.setEnabled(false);
@@ -156,7 +156,7 @@ public class AddRecipeActivity extends RecipeDetailActivity
         MainActivity.start(this);
     }
 
-    // --- --- --- call from other activity --- --- ---
+    // --- --- --- Call from other activity --- --- ---
     public static void start(Context context)
     {
         Intent intent = new Intent(context, AddRecipeActivity.class);
