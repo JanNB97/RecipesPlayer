@@ -12,7 +12,7 @@ import android.widget.AdapterView;
 
 import bingemann_software.recipesplayer.MainActivity;
 import bingemann_software.recipesplayer.R;
-import bingemann_software.recipesplayer.activites.ui.recycler_view.occasion_spinner.OccasionArrayAdapter;
+import bingemann_software.recipesplayer.activites.ui.occasion_spinner.OccasionArrayAdapter;
 import bingemann_software.recipesplayer.data.Recipe;
 import bingemann_software.recipesplayer.http_client.RecipeDbHttpClient;
 
