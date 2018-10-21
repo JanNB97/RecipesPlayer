@@ -89,7 +89,7 @@ public class AllRecipesRecyclerView
                 return;
             case SERVER_RESPONSE_NOT_VALID:
                 NotificationMan.showShortToast(this.mainActivity,
-                        mainActivity.getResources().getString(R.string.server_cannot_be_reached));
+                        mainActivity.getResources().getString(R.string.major_error_message));
                 // TODO
                 break;
         }
