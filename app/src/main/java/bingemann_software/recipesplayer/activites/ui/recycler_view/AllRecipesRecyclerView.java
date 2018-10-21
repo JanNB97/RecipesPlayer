@@ -2,7 +2,6 @@ package bingemann_software.recipesplayer.activites.ui.recycler_view;
 
 import android.support.annotation.IdRes;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.animation.AnimationUtils;
@@ -19,17 +18,17 @@ import bingemann_software.recipesplayer.tasks.AServerTask;
 
 public class AllRecipesRecyclerView
 {
-    private MainActivity activity;
+    private MainActivity mainActivity;
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
 
     private RecipeAdapter[] allRecipeAdapters;
 
-    public AllRecipesRecyclerView(MainActivity activity, @IdRes int id)
+    public AllRecipesRecyclerView(MainActivity mainActivity, @IdRes int id)
     {
-        this.activity = activity;
-        this.recyclerView = activity.findViewById(id);
-        this.swipeRefreshLayout = activity.findViewById(R.id.swiperefresh);
+        this.mainActivity = mainActivity;
+        this.recyclerView = mainActivity.findViewById(id);
+        this.swipeRefreshLayout = mainActivity.findViewById(R.id.swiperefresh);
 
         this.initRecyclerView();
         this.initLayout();
@@ -41,14 +40,14 @@ public class AllRecipesRecyclerView
     private void initRecyclerView()
     {
         LayoutAnimationController animation
-                = AnimationUtils.loadLayoutAnimation(this.activity, R.anim.layout_fall_down);
+                = AnimationUtils.loadLayoutAnimation(this.mainActivity, R.anim.layout_fall_down);
         this.recyclerView.setLayoutAnimation(animation);
     }
 
     private void initLayout()
     {
         // use linear layout manager
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(activity);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(mainActivity);
         this.recyclerView.setLayoutManager(layoutManager);
     }
 
@@ -78,13 +77,13 @@ public class AllRecipesRecyclerView
         switch (response)
         {
             case SERVER_CANNOT_BE_REACHED:
-                NotificationMan.showShortToast(this.activity,
-                        activity.getResources().getString(R.string.server_cannot_be_reached));
+                NotificationMan.showShortToast(this.mainActivity,
+                        mainActivity.getResources().getString(R.string.server_cannot_be_reached));
                 // TODO
                 return;
             case SERVER_RESPONSE_NOT_VALID:
-                NotificationMan.showShortToast(this.activity,
-                        activity.getResources().getString(R.string.server_cannot_be_reached));
+                NotificationMan.showShortToast(this.mainActivity,
+                        mainActivity.getResources().getString(R.string.server_cannot_be_reached));
                 // TODO
                 break;
         }
@@ -92,7 +91,7 @@ public class AllRecipesRecyclerView
         this.recyclerView.setAdapter(this.allRecipeAdapters[Recipe.Occasion.MEAL.ordinal()]);
         this.recyclerView.scheduleLayoutAnimation();
 
-        this.activity.setEnabled(true);
+        this.mainActivity.setEnabled(true);
     }
 
     public void swapAdapters(Recipe.Occasion occasion)
@@ -118,38 +117,44 @@ public class AllRecipesRecyclerView
     private void handleOnRefreshDragged()
     {
         this.recyclerView.setEnabled(false);
-        this.activity.setEnabled(false);
+        this.mainActivity.setEnabled(false);
 
-        new AServerTask(() -> {
-            try
-            {
-                OccasionRecipesList.loadInstances();
-                return ServerResponse.SUCCESS;
-            } catch (ServerCannotBeReachedException e)
-            {
-                return ServerResponse.SERVER_CANNOT_BE_REACHED;
-            }
-        }, (ServerResponse response) -> {
-            this.swipeRefreshLayout.setRefreshing(false);
+        new AServerTask(this::loadRecipesInBackground, this::onPostLoadingRecipes).execute();
+    }
 
-            switch(response)
-            {
-                case SERVER_CANNOT_BE_REACHED:
-                    NotificationMan.showShortToast(this.activity,
-                            this.activity.getResources().getString(R.string.server_cannot_be_reached));
-                    // TODO
-                    break;
-                case SERVER_RESPONSE_NOT_VALID:
-                    NotificationMan.showShortToast(this.activity,
-                            this.activity.getResources().getString(R.string.major_error_message));
-                    // TODO
-                    break;
-            }
+    private ServerResponse loadRecipesInBackground()
+    {
+        try
+        {
+            OccasionRecipesList.loadInstances();
+            return ServerResponse.SUCCESS;
+        } catch (ServerCannotBeReachedException e)
+        {
+            return ServerResponse.SERVER_CANNOT_BE_REACHED;
+        }
+    }
 
-            this.recyclerView.setEnabled(true);
-            this.activity.setEnabled(true);
-            this.notifyAllDataSetChanged();
-            this.recyclerView.scheduleLayoutAnimation();
-        }).execute();
+    private void onPostLoadingRecipes(ServerResponse response)
+    {
+        this.swipeRefreshLayout.setRefreshing(false);
+
+        switch(response)
+        {
+            case SERVER_CANNOT_BE_REACHED:
+                NotificationMan.showShortToast(this.mainActivity,
+                        this.mainActivity.getResources().getString(R.string.server_cannot_be_reached));
+                // TODO
+                break;
+            case SERVER_RESPONSE_NOT_VALID:
+                NotificationMan.showShortToast(this.mainActivity,
+                        this.mainActivity.getResources().getString(R.string.major_error_message));
+                // TODO
+                break;
+        }
+
+        this.recyclerView.setEnabled(true);
+        this.mainActivity.setEnabled(true);
+        this.notifyAllDataSetChanged();
+        this.recyclerView.scheduleLayoutAnimation();
     }
 }

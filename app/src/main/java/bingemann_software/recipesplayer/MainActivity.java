@@ -16,7 +16,6 @@ import bingemann_software.recipesplayer.activites.ui.recycler_view.AllRecipesRec
 public class MainActivity extends ToolbarActivity
 {
     private AllRecipesRecyclerView allRecipesRecyclerView;
-    private FloatingActionButton addfloatingActionButton;
     private TabLayout tabLayout;
 
     @Override
@@ -25,7 +24,6 @@ public class MainActivity extends ToolbarActivity
         super.onCreate(savedInstanceState);
         setContentViewAndAddToolbar(R.layout.activity_main, R.string.main_activity_title);
 
-        this.addfloatingActionButton = this.findViewById(R.id.addfloatingActionButton);
         this.tabLayout = this.findViewById(R.id.occasionTabLayout);
 
         this.initTabItems();
@@ -83,7 +81,6 @@ public class MainActivity extends ToolbarActivity
 
     public void setEnabled(boolean enabled)
     {
-        this.addfloatingActionButton.setEnabled(enabled);
         this.tabLayout.setEnabled(enabled);
     }
 
