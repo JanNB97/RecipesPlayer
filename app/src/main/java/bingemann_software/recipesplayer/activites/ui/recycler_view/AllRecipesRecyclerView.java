@@ -90,8 +90,6 @@ public class AllRecipesRecyclerView
 
         this.recyclerView.setAdapter(this.allRecipeAdapters[Recipe.Occasion.MEAL.ordinal()]);
         this.recyclerView.scheduleLayoutAnimation();
-
-        this.mainActivity.setEnabled(true);
     }
 
     public void swapAdapters(Recipe.Occasion occasion)
@@ -117,8 +115,6 @@ public class AllRecipesRecyclerView
     private void handleOnRefreshDragged()
     {
         this.recyclerView.setEnabled(false);
-        this.mainActivity.setEnabled(false);
-
         new AServerTask(this::loadRecipesInBackground, this::onPostLoadingRecipes).execute();
     }
 
@@ -153,7 +149,6 @@ public class AllRecipesRecyclerView
         }
 
         this.recyclerView.setEnabled(true);
-        this.mainActivity.setEnabled(true);
         this.notifyAllDataSetChanged();
         this.recyclerView.scheduleLayoutAnimation();
     }
