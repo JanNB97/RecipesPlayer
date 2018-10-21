@@ -37,6 +37,14 @@ public class RecipeDetailActivity extends ToolbarGoBackActivity
         this.occasionSpinner = this.findViewById(R.id.occasionSpinner);
     }
 
+    protected void setEnabled(boolean enabled)
+    {
+        this.nameTextView.setEnabled(enabled);
+        this.imageView.setEnabled(enabled);
+        this.descriptionTextView.setEnabled(enabled);
+        this.occasionSpinner.setEnabled(enabled);
+    }
+
     // --- --- --- call from other activity --- --- ---
     public static void start(Context context, Class<?> parent)
     {

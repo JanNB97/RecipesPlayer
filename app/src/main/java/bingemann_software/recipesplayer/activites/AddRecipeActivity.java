@@ -15,6 +15,13 @@ import bingemann_software.recipesplayer.R;
 import bingemann_software.recipesplayer.activites.ui.occasion_spinner.OccasionArrayAdapter;
 import bingemann_software.recipesplayer.data.Recipe;
 import bingemann_software.recipesplayer.http_client.RecipeDbHttpClient;
+import bingemann_software.recipesplayer.http_client.ServerResponse;
+import bingemann_software.recipesplayer.notifications.NotificationMan;
+import bingemann_software.recipesplayer.tasks.AServerTask;
+import bingemann_software.recipesplayer.tasks.ATask;
+
+import static bingemann_software.recipesplayer.http_client.ServerResponse.SERVER_CANNOT_BE_REACHED;
+import static bingemann_software.recipesplayer.http_client.ServerResponse.SERVER_RESPONSE_NOT_VALID;
 
 public class AddRecipeActivity extends RecipeDetailActivity
 {
@@ -112,11 +119,7 @@ public class AddRecipeActivity extends RecipeDetailActivity
         switch (item.getItemId())
         {
             case R.id.action_add:
-                // TODO make task
-                new Thread(() ->
-                    RecipeDbHttpClient.sendAddRecipe(this.getDisplayedRecipe())
-                ).start();
-                MainActivity.start(this);
+                this.handleClickedOnAddAction();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -128,5 +131,33 @@ public class AddRecipeActivity extends RecipeDetailActivity
         Intent intent = new Intent(context, AddRecipeActivity.class);
         addDataToIntent(intent, MainActivity.class);
         context.startActivity(intent);
+    }
+
+    // --- --- --- handle actions --- --- ---
+    public void handleClickedOnAddAction()
+    {
+        super.setEnabled(false);
+
+        new AServerTask(
+                () -> RecipeDbHttpClient.sendAddRecipe(this.getDisplayedRecipe()),
+                this::onPostAddedRecipe
+        ).execute();
+    }
+
+    private void onPostAddedRecipe(ServerResponse response)
+    {
+        switch (response)
+        {
+            case SERVER_CANNOT_BE_REACHED:
+                NotificationMan.showShortToast(this, getResources().getString(R.string.server_cannot_be_reached));
+                // TODO
+                break;
+            case SERVER_RESPONSE_NOT_VALID:
+                NotificationMan.showShortToast(this, getResources().getString(R.string.major_error_message));
+                // TODO
+                break;
+        }
+
+        MainActivity.start(this);
     }
 }

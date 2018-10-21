@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Recipes Player</string>
     <string name="main_activity_title">Alle Rezepte</string>
+
+    <string name="major_error_message">Ein schwerer Server-Fehler ist aufgetreten, bitte benachrichtige deinen Administrator</string>
+    <string name="already_assigned_server_message">Der Name ist leider bereits vergeben</string>
+    <string name="server_cannot_be_reached">Es kann keine Verbindung zum Server hergestellt werden</string>
 </resources>
