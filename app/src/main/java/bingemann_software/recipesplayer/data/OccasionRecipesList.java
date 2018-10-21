@@ -39,6 +39,16 @@ public class OccasionRecipesList implements RecipeList
             instances[occasion.ordinal()] = new OccasionRecipesList();
         }
 
+        loadInstances();
+    }
+
+    public static void loadInstances() throws ServerCannotBeReachedException
+    {
+        for(Recipe.Occasion occasion : Recipe.Occasion.values())
+        {
+            instances[occasion.ordinal()].clear();
+        }
+
         for(Recipe recipe : RecipeDbHttpClient.getAllRecipes())
         {
             instances[recipe.getOccasion().ordinal()].add(recipe);
@@ -82,5 +92,12 @@ public class OccasionRecipesList implements RecipeList
     public int size()
     {
         return this.recipes.size();
+    }
+
+    @Override
+    public boolean clear()
+    {
+        recipes.clear();
+        return true;
     }
 }

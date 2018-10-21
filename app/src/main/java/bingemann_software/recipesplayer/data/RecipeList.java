@@ -13,4 +13,6 @@ public interface RecipeList
     boolean isEmpty();
 
     int size();
+
+    boolean clear();
 }
