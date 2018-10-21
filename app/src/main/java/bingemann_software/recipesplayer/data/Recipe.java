@@ -1,5 +1,6 @@
 package bingemann_software.recipesplayer.data;
 
+import android.graphics.Color;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.IdRes;
 
@@ -20,16 +21,18 @@ public class Recipe
 
     public enum Occasion
     {
-        APPETIZER("Vorspeise", R.drawable.appetizer_icon_trans_v2),
-        MEAL("Hauptspeise", R.drawable.meal_icon_trans),
-        Dessert("Dessert", R.drawable.dessert_icon_trans);
+        APPETIZER("Vorspeise", R.drawable.appetizer_icon_trans_v2, Color.parseColor("#C6FF00")),
+        MEAL("Hauptspeise", R.drawable.meal_icon_trans, Color.parseColor("#FFD54F")),
+        Dessert("Dessert", R.drawable.dessert_icon_trans, Color.parseColor("#4DD0E1"));
 
         String value;
         @DrawableRes int icon;
-        Occasion(String value, @DrawableRes int icon)
+        int color;
+        Occasion(String value, @DrawableRes int icon, int color)
         {
             this.value = value;
             this.icon = icon;
+            this.color = color;
         }
 
         public String getValue()
@@ -40,6 +43,11 @@ public class Recipe
         public int getIcon()
         {
             return icon;
+        }
+
+        public int getColor()
+        {
+            return color;
         }
     }
 
