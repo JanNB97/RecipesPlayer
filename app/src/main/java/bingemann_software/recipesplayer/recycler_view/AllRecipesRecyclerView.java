@@ -4,7 +4,10 @@ import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 
+import bingemann_software.recipesplayer.R;
 import bingemann_software.recipesplayer.data.OccasionRecipesList;
 import bingemann_software.recipesplayer.data.Recipe;
 import bingemann_software.recipesplayer.http_client.ServerCannotBeReachedException;
@@ -21,6 +24,7 @@ public class AllRecipesRecyclerView
         this.activity = activity;
         this.recyclerView = activity.findViewById(id);
 
+        this.initRecyclerView();
         this.initLayout();
         new Thread(() -> {
             try
@@ -36,6 +40,13 @@ public class AllRecipesRecyclerView
                 e.printStackTrace();
             }
         }).start();
+    }
+
+    private void initRecyclerView()
+    {
+        LayoutAnimationController animation
+                = AnimationUtils.loadLayoutAnimation(this.activity, R.anim.layout_fall_down);
+        this.recyclerView.setLayoutAnimation(animation);
     }
 
     private void initLayout()
@@ -59,5 +70,6 @@ public class AllRecipesRecyclerView
     public void swapAdapters(Recipe.Occasion occasion)
     {
         this.recyclerView.swapAdapter(allRecipeAdapters[occasion.ordinal()], false);
+        this.recyclerView.scheduleLayoutAnimation();
     }
 }
