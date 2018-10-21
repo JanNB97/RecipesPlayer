@@ -49,8 +49,10 @@ public class OccasionRecipesList implements RecipeList
             instances[occasion.ordinal()].clear();
         }
 
-        for(Recipe recipe : RecipeDbHttpClient.getAllRecipes())
+        List<Recipe> recipeList = RecipeDbHttpClient.getAllRecipes();
+        for(int i = recipeList.size() - 1; i >= 0; i--)
         {
+            Recipe recipe = recipeList.get(i);
             instances[recipe.getOccasion().ordinal()].add(recipe);
         }
     }
