@@ -1,8 +1,10 @@
 package bingemann_software.recipesplayer;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.view.View;
 
@@ -14,12 +16,17 @@ import bingemann_software.recipesplayer.activites.ui.recycler_view.AllRecipesRec
 public class MainActivity extends ToolbarActivity
 {
     private AllRecipesRecyclerView allRecipesRecyclerView;
+    private FloatingActionButton addfloatingActionButton;
+    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentViewAndAddToolbar(R.layout.activity_main, R.string.main_activity_title);
+
+        this.addfloatingActionButton = this.findViewById(R.id.addfloatingActionButton);
+        this.tabLayout = this.findViewById(R.id.occasionTabLayout);
 
         this.initTabItems();
 
@@ -72,6 +79,12 @@ public class MainActivity extends ToolbarActivity
     public void handleClickOnAddRecipe(View view)
     {
         AddRecipeActivity.start(this);
+    }
+
+    public void setEnabled(boolean enabled)
+    {
+        this.addfloatingActionButton.setEnabled(enabled);
+        this.tabLayout.setEnabled(enabled);
     }
 
     // --- --- --- call from other activities --- --- ---
