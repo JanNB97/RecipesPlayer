@@ -31,8 +31,10 @@ public class AllRecipesRecyclerView
             {
                 this.initAdapters();
                 this.activity.runOnUiThread(() ->
-                        this.recyclerView.setAdapter(this.allRecipeAdapters[Recipe.Occasion.MEAL.ordinal()]
-                ));
+                {
+                    this.recyclerView.setAdapter(this.allRecipeAdapters[Recipe.Occasion.MEAL.ordinal()]);
+                    this.recyclerView.scheduleLayoutAnimation();
+                });
 
             } catch (ServerCannotBeReachedException e)
             {
