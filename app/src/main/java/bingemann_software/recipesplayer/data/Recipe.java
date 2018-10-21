@@ -17,7 +17,7 @@ public class Recipe
 
     private String description;
     private URL pictureURL;
-    private Occasion occasion;    // meal, desert, ...
+    private Occasion occasion;
 
     public enum Occasion
     {
