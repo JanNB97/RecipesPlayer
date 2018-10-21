@@ -28,6 +28,7 @@ public class AddRecipeActivity extends RecipeDetailActivity
     protected MenuItem addItem;
     protected Recipe.Occasion selectedOccasion;
 
+    // --- --- --- initialization --- --- ---
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -35,32 +36,6 @@ public class AddRecipeActivity extends RecipeDetailActivity
 
         this.initNameTextView();
         this.initOccasionSpinner();
-    }
-
-    private Recipe getDisplayedRecipe()
-    {
-        // TODO - creator
-        String name = nameTextView.getText().toString();
-        if(name.isEmpty())
-        {
-            // TODO - enable field only if name not empty
-            return null;
-        }
-
-        Recipe recipe = new Recipe(new Recipe.Creator("Jan"), name);
-        String description = descriptionTextView.getText().toString();
-        if(!description.isEmpty())
-        {
-           recipe.setDescription(description);
-        }
-
-        if(this.selectedOccasion != Recipe.Occasion.MEAL)
-        {
-            recipe.setOccasion(this.selectedOccasion);
-        }
-
-        // TODO - occasion spinner
-        return recipe;
     }
 
     private void initNameTextView()
@@ -100,6 +75,33 @@ public class AddRecipeActivity extends RecipeDetailActivity
         super.occasionSpinner.setSelection(Recipe.Occasion.MEAL.ordinal());
     }
 
+    // --- --- --- Get Recipe --- --- ---
+    private Recipe getDisplayedRecipe()
+    {
+        // TODO - creator
+        String name = nameTextView.getText().toString();
+        if(name.isEmpty())
+        {
+            // TODO - enable field only if name not empty
+            return null;
+        }
+
+        Recipe recipe = new Recipe(new Recipe.Creator("Jan"), name);
+        String description = descriptionTextView.getText().toString();
+        if(!description.isEmpty())
+        {
+            recipe.setDescription(description);
+        }
+
+        if(this.selectedOccasion != Recipe.Occasion.MEAL)
+        {
+            recipe.setOccasion(this.selectedOccasion);
+        }
+
+        // TODO - occasion spinner
+        return recipe;
+    }
+
     // --- --- --- Action menu --- --- ---
     private void setAddActionButtonEnabled(boolean enabled)
     {
@@ -124,13 +126,6 @@ public class AddRecipeActivity extends RecipeDetailActivity
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    public static void start(Context context)
-    {
-        Intent intent = new Intent(context, AddRecipeActivity.class);
-        addDataToIntent(intent, MainActivity.class);
-        context.startActivity(intent);
     }
 
     // --- --- --- handle actions --- --- ---
@@ -159,5 +154,13 @@ public class AddRecipeActivity extends RecipeDetailActivity
         }
 
         MainActivity.start(this);
+    }
+
+    // --- --- --- call from other activity --- --- ---
+    public static void start(Context context)
+    {
+        Intent intent = new Intent(context, AddRecipeActivity.class);
+        addDataToIntent(intent, MainActivity.class);
+        context.startActivity(intent);
     }
 }

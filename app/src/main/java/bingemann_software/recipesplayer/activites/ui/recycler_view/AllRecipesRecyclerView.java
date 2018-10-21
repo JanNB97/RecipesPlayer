@@ -24,17 +24,23 @@ public class AllRecipesRecyclerView
 
     private RecipeAdapter[] allRecipeAdapters;
 
+    // --- --- --- initialization --- --- ---
     public AllRecipesRecyclerView(MainActivity mainActivity, @IdRes int id)
     {
         this.mainActivity = mainActivity;
-        this.recyclerView = mainActivity.findViewById(id);
-        this.swipeRefreshLayout = mainActivity.findViewById(R.id.swiperefresh);
+        this.findViewsByIds(id);
 
         this.initRecyclerView();
         this.initLayout();
         this.initSwipeRefreshLayout();
 
         new AServerTask(this::initAdapters, this::onPostInitAdapters).execute();
+    }
+
+    private void findViewsByIds(@IdRes int recyclerViewId)
+    {
+        this.recyclerView = mainActivity.findViewById(recyclerViewId);
+        this.swipeRefreshLayout = mainActivity.findViewById(R.id.swiperefresh);
     }
 
     private void initRecyclerView()
