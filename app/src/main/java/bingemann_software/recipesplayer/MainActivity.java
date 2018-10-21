@@ -8,7 +8,7 @@ import android.view.View;
 
 import bingemann_software.recipesplayer.activites.AddRecipeActivity;
 import bingemann_software.recipesplayer.activites.ToolbarActivity;
-import bingemann_software.recipesplayer.data.AllRecipesList;
+import bingemann_software.recipesplayer.data.OccasionRecipesList;
 import bingemann_software.recipesplayer.data.Recipe;
 import bingemann_software.recipesplayer.recycler_view.AllRecipesRecyclerView;
 
@@ -43,6 +43,10 @@ public class MainActivity extends ToolbarActivity
         view3.findViewById(R.id.icon).setBackgroundResource(R.drawable.dessert_icon_trans);
         tabLayout.addTab(tabLayout.newTab().setCustomView(view3));
 
+        // select meal tab
+        TabLayout.Tab tab = tabLayout.getTabAt(Recipe.Occasion.MEAL.ordinal());
+        tab.select();
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener()
         {
             @Override
@@ -63,9 +67,7 @@ public class MainActivity extends ToolbarActivity
     {
         int position = tab.getPosition();
         Recipe.Occasion selectedOccasion = Recipe.Occasion.values()[position];
-        AllRecipesList.getInstance().setOccasion(selectedOccasion);
-
-        this.allRecipesRecyclerView.getAdapter().notifyDataSetChanged();
+        this.allRecipesRecyclerView.swapAdapters(selectedOccasion);
     }
 
     public void handleClickOnAddRecipe(View view)

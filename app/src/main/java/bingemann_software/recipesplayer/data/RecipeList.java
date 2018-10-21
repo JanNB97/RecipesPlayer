@@ -13,7 +13,4 @@ public interface RecipeList
     boolean isEmpty();
 
     int size();
-
-    void setOccasion(Recipe.Occasion occasion);
-    Recipe.Occasion getOccasion();
 }
